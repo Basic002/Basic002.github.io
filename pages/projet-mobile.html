@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Mobile | Enzo GIORDANI</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MonPortfolio.</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Retour à l'accueil</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <div class="header-content">
+            <h1>Ma Carte Pro (Mobile)</h1>
+            <p class="project-meta">Projet Personnel - React Native</p>
+            
+            <div class="tech-badges">
+                <span class="badge">React Native</span>
+                <span class="badge">Expo</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">AsyncStorage</span>
+            </div>
+            
+            <div class="project-buttons">
+                <a href="https://github.com/Basic002/ma-carte-pro" target="_blank" class="btn btn-primary">Voir le code sur GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section project-details">
+        <div class="detail-container">
+            
+            <div class="detail-block">
+                <h2>Le besoin</h2>
+                <p>
+                    L'objectif était de créer une application mobile utilitaire permettant de remplacer les cartes de visite papier. 
+                    L'utilisateur doit pouvoir saisir ses informations une seule fois, les sauvegarder dans le téléphone, et présenter un QR Code scannable pour partager son contact.
+                </p>
+            </div>
+
+            <div class="detail-block">
+                <h2>Solutions Techniques</h2>
+                <ul class="feature-list">
+                    <li>
+                        <strong>Persistance des données :</strong> Utilisation de <code>AsyncStorage</code> pour sauvegarder le profil localement.
+                    </li>
+                    <li>
+                        <strong>Standard vCard :</strong> Génération d'une chaîne de caractères formatée pour être reconnue nativement par les contacts iOS et Android.
+                    </li>
+                    <li>
+                        <strong>UX Mobile :</strong> Gestion du clavier avec <code>Keyboard.dismiss()</code> et défilement fluide.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="detail-block code-block-container">
+                <h2>Un peu de code</h2>
+                <p>Voici comment je gère la sauvegarde locale des données utilisateur :</p>
+                
+                <pre><code class="language-tsx">
+                    // Fonction de sauvegarde (AsyncStorage)
+                    const saveData = async () => {
+                    Keyboard.dismiss(); // On ferme le clavier
+                    try {
+                        // Création de l'objet profil
+                        const profile = { prenom, nom, entreprise, telephone, email };
+                        
+                        // Sauvegarde dans le stockage du téléphone (transformé en String)
+                        await AsyncStorage.setItem('userProfile', JSON.stringify(profile));
+                        
+                        Alert.alert("Succès", "Vos informations sont enregistrées !");
+                    } catch (e) {
+                        Alert.alert("Erreur", "Impossible de sauvegarder");
+                    }
+                    };
+                </code></pre>
+            </div>
+
+            <div class="detail-block">
+                <h2>Aperçu de l'interface</h2>
+                
+                <div class="gallery-container">
+                    <p class="gallery-label">1. Au démarrage (Formulaire vide)</p>
+                    <div class="gallery-row">
+                        <img src="../assets/img/projets/mobile/screen1.jpeg" alt="Accueil vide" class="mobile-screenshot">
+                        <img src="../assets/img/projets/mobile/screen2.jpeg" alt="QR vide" class="mobile-screenshot">
+                    </div>
+
+                    <div class="gallery-separator"></div>
+
+                    <p class="gallery-label">2. Avec données (QR Code généré)</p>
+                    <div class="gallery-row">
+                        <img src="../assets/img/projets/mobile/screen3.jpeg" alt="Formulaire rempli" class="mobile-screenshot">
+                        <img src="../assets/img/projets/mobile/screen4.jpeg" alt="QR Code généré" class="mobile-screenshot">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js"></script>
+
+</body>
+</html>

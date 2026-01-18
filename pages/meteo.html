@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo Direct | JS API Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        h1 { margin-bottom: 1.5rem; font-size: 1.5rem; color: #2c3e50; }
+
+        .search-box { display: flex; gap: 10px; margin-bottom: 2rem; }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #2c3e50;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #34495e; }
+
+        .weather-info { display: none; }
+
+        .temp { font-size: 3rem; font-weight: bold; margin: 10px 0; }
+        .desc { text-transform: capitalize; color: #666; }
+        .icon { width: 100px; height: 100px; }
+        
+        .error { color: red; margin-top: 10px; display: none; }
+        
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Météo en Direct 🌤️</h1>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Entrez une ville (ex: Metz)">
+            <button onclick="getWeather()">🔍</button>
+        </div>
+
+        <p class="error" id="errorMessage">Ville introuvable !</p>
+
+        <div class="weather-info" id="weatherInfo">
+            <h2 id="cityName">Paris</h2>
+            <img id="weatherIcon" class="icon" src="" alt="Icône météo">
+            <div class="temp" id="temp">22°c</div>
+            <div class="desc" id="description">Nuageux</div>
+            <div style="margin-top: 15px; font-size: 0.9rem;">
+                💧 Humidité: <span id="humidity">50</span>%
+            </div>
+        </div>
+        
+        <a href="../index.html" class="back-link">← Retour au portfolio</a>
+    </div>
+
+    <script>
+        const apiKey = "cec9b3fc3c8d3878e684c9c3e21c1c77"; 
+
+        async function getWeather() {
+            const city = document.getElementById('cityInput').value;
+            const errorMsg = document.getElementById('errorMessage');
+            const weatherDiv = document.getElementById('weatherInfo');
+
+            if (city === "") return;
+
+            // URL de l'API (avec units=metric pour avoir des Celsius)
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`;
+
+            try {
+                // 1. On lance la requête (fetch)
+                const response = await fetch(url);
+                
+                // 2. Si la ville n'existe pas (Erreur 404)
+                if (!response.ok) {
+                    errorMsg.style.display = "block";
+                    weatherDiv.style.display = "none";
+                    return;
+                }
+
+                // 3. On convertit la réponse en JSON (objet lisible par JS)
+                const data = await response.json();
+
+                // 4. On met à jour l'HTML avec les données reçues
+                document.getElementById('cityName').innerText = data.name + ", " + data.sys.country;
+                document.getElementById('temp').innerText = Math.round(data.main.temp) + "°c";
+                document.getElementById('description').innerText = data.weather[0].description;
+                document.getElementById('humidity').innerText = data.main.humidity;
+                
+                // Récupération de l'image officielle de l'API
+                const iconCode = data.weather[0].icon;
+                document.getElementById('weatherIcon').src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+                // On affiche le bloc météo et on cache l'erreur
+                weatherDiv.style.display = "block";
+                errorMsg.style.display = "none";
+
+            } catch (error) {
+                console.error("Erreur de connexion:", error);
+            }
+        }
+    </script>
+
+</body>
+</html>

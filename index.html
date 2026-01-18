@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Enzo GIORDANI | Étudiant Informatique</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MonPortfolio.</div>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="accueil" class="hero">
+        <div class="hero-content" style="text-align: center; margin: 0 auto; max-width: 800px;">
+            <p class="subtitle">Bonjour, je suis</p>
+            <h1>Enzo GIORDANI</h1>
+            <h2>Étudiant en 2ème année de BUT Informatique</h2>
+            <p class="description">
+                Passionné par le développement Web et l'architecture logicielle. 
+                Actuellement à la recherche d'un stage de 8 semaines.
+            </p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+                <a href="assets/docs/cv_giordani_enzo.pdf" target="_blank" class="btn btn-secondary">Télécharger mon CV</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="projets" class="section">
+        <h2 class="section-title">Mes Projets Personnels</h2>
+        <div class="projects-grid">
+            
+            <article class="project-card">
+                <div class="card-image">
+                    <img src="assets/img/projets/mobile/icon.png" alt="App Mobile vCard">
+                </div>
+                <div class="card-content">
+                    <h3>App Mobile - Ma Carte Pro</h3>
+                    <p class="tech-stack">React Native • Expo • AsyncStorage</p>
+                    <p>Application mobile permettant de générer une carte de visite virtuelle (vCard) via un QR Code.</p>
+                    <a href="pages/projet-mobile.html" class="btn-small">En savoir plus →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-image">
+                    <img src="https://placehold.co/600x400/2c3e50/ffffff?text=Snake+Python" alt="Jeu Snake Python">
+                </div>
+                <div class="card-content">
+                    <h3>Jeu Snake Retro</h3>
+                    <p class="tech-stack">Python • Pygame</p>
+                    <p>Le célèbre jeu du serpent recréé de zéro. Gestion des collisions, score dynamique et vitesse progressive.</p>
+                    <a href="https://github.com/Basic002/jeu-snake-python" target="_blank" class="btn-small">Voir le code GitHub →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-image">
+                    <img src="https://placehold.co/600x400/3498db/ffffff?text=Weather+App+JS" alt="Application Météo">
+                </div>
+                <div class="card-content">
+                    <h3>Weather Dashboard</h3>
+                    <p class="tech-stack">JavaScript • API REST • JSON</p>
+                    <p>Interface météo connectée à l'API OpenWeatherMap. Affichage des conditions en temps réel via requêtes asynchrones.</p>
+                    <a href="pages/meteo.html" class="btn-small">Voir la démo →</a>
+                </div>
+            </article>
+
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem;">Mes Projets Universitaires (SAÉ)</h2>
+        <div class="projects-grid">
+
+            <article class="project-card">
+                <div class="card-image">
+                    <img src="https://placehold.co/600x400/2c3e50/ffffff?text=SAE+1.03+Linux" alt="SAE 1.03 Linux">
+                </div>
+                <div class="card-content">
+                    <h3>SAÉ 1.03 : Système & Linux</h3>
+                    <p class="tech-stack">Bash • Automatisation • Regex</p>
+                    <p>Création d'outils d'administration système : surveillance des connexions et un analyseur de logs interactif.</p>
+                    <a href="https://github.com/Basic002/scripts-systeme-linux" target="_blank" class="btn-small">Voir les scripts →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-image">
+                    <img src="https://placehold.co/600x400/3178c6/ffffff?text=SAE+2.02+Graphes" alt="SAE 2.02 Graphes">
+                </div>
+                <div class="card-content">
+                    <h3>SAÉ 2.02 : Algorithmes & Graphes</h3>
+                    <p class="tech-stack">TypeScript • Théorie des Graphes • POO</p>
+                    <p>Conception d'un moteur de manipulation de graphes orientés (DAG). Implémentation du tri topologique et détection de cycles.</p>
+                    <a href="https://github.com/Basic002/sae-202-graphes" target="_blank" class="btn-small">Voir le code →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-image full-view">
+                    <img src="assets/img/projets/smart-park/SmartPark.png" alt="Interface Smart Park">
+                </div>
+                <div class="card-content">
+                    <span class="group-badge">👥 Projet de groupe</span>
+                    
+                    <h3>SAÉ 3.01 : Smart Park</h3>
+                    <p class="tech-stack">React • Leaflet API • PHP</p>
+                    <p>Solution web de stationnement. Géolocalisation et guidage vers le parking le plus proche.</p>
+                    <a href="https://smart-park.site" target="_blank" class="btn-small">Voir le site →</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="competences" class="section bg-light">
+        <h2 class="section-title">Mes Compétences</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Front-end</h3>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript</li>
+                    <li>React (Notions)</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Back-end</h3>
+                <ul>
+                    <li>PHP / SQL</li>
+                    <li>Python</li>
+                    <li>Node.js</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Outils & Devops</h3>
+                <ul>
+                    <li>Git / GitHub</li>
+                    <li>Linux (Bash)</li>
+                    <li>Trello</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>Me contacter</h2>
+            <p>Une opportunité de stage ou une question ? N'hésitez pas.</p>
+            <a href="mailto:enzo.giordani57@gmail.com" class="btn btn-primary">M'envoyer un email</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/enzo-giordani-b287233a6/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Basic002" target="_blank">GitHub</a>
+            </div>
+            
+            <div class="copyright">
+                <p>
+                    &copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.
+                </p>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const yearSpan = document.getElementById("year");
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    });
+                </script>
+                <a href="mentions-legales.html">Mentions Légales</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
