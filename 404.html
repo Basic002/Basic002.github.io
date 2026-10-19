@@ -3,83 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page introuvable - Erreur 404</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Page introuvable (404) | Enzo GIORDANI</title>
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            height: 100vh;
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>EG</text></svg>">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Anti-FOUC Theme Script -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+
+    <style>
+        .container-404-page {
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 2rem;
             text-align: center;
-            padding: 20px;
+            background-color: var(--bg-main);
+            background-image: var(--hero-mesh);
         }
 
-        .container-404 {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
+        .card-404 {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            max-width: 580px;
             width: 100%;
         }
 
-        h1 {
-            font-size: 3rem;
-            color: #d9534f;
-            margin-bottom: 10px;
+        .title-404 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            line-height: 1;
         }
 
-        p.subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: #555;
+        .subtitle-404 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
         }
 
         .gif-travolta {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: var(--radius-md);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
         }
 
-        .btn-retour {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-retour:hover {
-            background-color: #0056b3;
+        .text-404 {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
 
-    <main class="container-404">
-        <h1>404</h1>
-        <p class="subtitle">Oups ! Il semblerait que vous soyez perdu...</p>
-        
-        <img src="assets/img/travolta.gif" alt="John Travolta perdu" class="gif-travolta">
-        
-        <p style="margin-bottom: 20px;">Le lien que vous avez suivi est peut-être cassé, ou la page a été supprimée.</p>
-        
-        <a href="index.html" class="btn-retour">Retourner en lieu sûr (l'accueil)</a>
+    <main class="container-404-page">
+        <div class="card-404">
+            <h1 class="title-404">404</h1>
+            <p class="subtitle-404">Oups ! Il semblerait que vous soyez perdu...</p>
+            
+            <img src="assets/img/travolta.gif" alt="John Travolta perdu" class="gif-travolta">
+            
+            <p class="text-404">Le lien que vous avez suivi est peut-être erroné, ou la page a été déplacée.</p>
+            
+            <a href="index.html" class="btn btn-primary">
+                <span>← Retourner sur l'accueil</span>
+            </a>
+        </div>
     </main>
 
+    <!-- Main JS for Theme Support -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

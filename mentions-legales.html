@@ -3,18 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales - Enzo GIORDANI</title>
+    <title>Mentions Légales | Enzo GIORDANI</title>
     
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>EG</text></svg>">
+
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Anti-FOUC Theme Script -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">MonPortfolio.</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Retour à l'accueil</a></li>
-        </ul>
+        <a href="index.html" class="logo">
+            <span>MonPortfolio</span><span class="logo-dot">.</span>
+        </a>
+        
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html#projets">Projets</a></li>
+                <li><a href="index.html#competences">Compétences</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <button class="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <section class="section legal-section">
@@ -28,7 +69,7 @@
                     <strong>Statut :</strong> Étudiant en BUT Informatique (Particulier)<br>
                     <strong>Contact :</strong> <a href="mailto:enzo.giordani57@gmail.com">enzo.giordani57@gmail.com</a>
                 </p>
-                <p><em>En tant que particulier, l'adresse postale et le numéro de téléphone ne sont pas obligatoirement publics, sous réserve de les avoir communiqués à l'hébergeur.</em></p>
+                <p style="margin-top: 10px;"><em>En tant que particulier, l'adresse postale et le numéro de téléphone ne sont pas obligatoirement publics, sous réserve de les avoir communiqués à l'hébergeur.</em></p>
             </div>
 
             <div class="legal-block">
@@ -39,24 +80,27 @@
                     88 Colin P. Kelly Jr. Street<br>
                     San Francisco, CA 94107<br>
                     United States<br>
-                    <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank">Conditions d'utilisation de GitHub</a>
+                    <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">Conditions d'utilisation de GitHub</a>
                 </p>
             </div>
 
             <div class="legal-block">
                 <h2>3. Propriété intellectuelle</h2>
                 <p>
-                    Sauf mention contraire, l'ensemble des éléments figurant sur ce site (textes, codes, projets) sont la propriété exclusive d'Enzo GIORDANI.
+                    Sauf mention contraire, l'ensemble des éléments figurant sur ce site (textes, images des projets, codes sources) sont la propriété exclusive d'Enzo GIORDANI.
                 </p>
-                <p>
-                    Toute reproduction totale ou partielle de ce portfolio sans autorisation est interdite.
+                <p style="margin-top: 10px;">
+                    Toute reproduction totale ou partielle de ce portfolio sans autorisation préalable est interdite.
                 </p>
             </div>
 
             <div class="legal-block">
-                <h2>4. Données personnelles et Cookies</h2>
+                <h2>4. Données personnelles & Cookies</h2>
                 <p>
-                    Ce site est un portfolio statique (HTML/CSS). Il ne collecte aucune donnée personnelle à votre insu et n'utilise <strong>aucun cookie de traçage publicitaire</strong>.
+                    Ce site est un portfolio statique personnel (HTML/CSS/JS). Il ne collecte aucune donnée personnelle à votre insu et n'utilise <strong>aucun cookie de traçage publicitaire ou analytique intrusif</strong>.
+                </p>
+                <p style="margin-top: 10px;">
+                    L'éventuelle mémorisation de votre préférence de thème (mode clair ou sombre) est effectuée uniquement dans le stockage local de votre navigateur (<code>localStorage</code>) et ne transite vers aucun serveur externe.
                 </p>
             </div>
         </div>
@@ -64,9 +108,14 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Enzo GIORDANI. Tous droits réservés.</p>
+            <div class="copyright">
+                <p>&copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.</p>
+                <p><a href="index.html">← Retour à l'accueil</a></p>
+            </div>
         </div>
     </footer>
 
+    <!-- Main JS for Theme Toggle & Mobile Menu -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -3,303 +3,948 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Enzo GIORDANI | Étudiant Informatique</title>
+    <title>Enzo GIORDANI | Portfolio - Développeur Web & Logiciel</title>
+    <meta
+      name="description"
+      content="Portfolio d'Enzo GIORDANI, étudiant en 3ème année de BUT Informatique. Découvrez mes projets Web, Mobile, Réseau et Algorithmes."
+    />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-
+    <!-- Favicon SVG -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>EG</text></svg>"
+    />
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Anti-FOUC Theme Initialization Script -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
+    <!-- Header / Navigation Bar -->
     <nav class="navbar">
-      <div class="logo">MonPortfolio.</div>
-      <ul class="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a href="#accueil" class="logo">
+        <span>MonPortfolio</span><span class="logo-dot">.</span>
+      </a>
+
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Dark / Light Mode Toggle Button -->
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Changer de thème"
+            title="Changer de thème"
+          >
+            <!-- Sun Icon (shown in light mode) -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <!-- Moon Icon (shown in dark mode) -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button
+            class="mobile-menu-btn"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </nav>
 
+    <!-- Hero Section -->
     <header id="accueil" class="hero">
-      <div
-        class="hero-content"
-        style="text-align: center; margin: 0 auto; max-width: 800px"
-      >
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Étudiant en 3ème année BUT Informatique • À l'écoute d'opportunités</span>
+        </div>
+
         <p class="subtitle">Bonjour, je suis</p>
-        <h1>Enzo GIORDANI</h1>
+        <h1>Enzo <span class="gradient-text">GIORDANI</span></h1>
         <h2>Étudiant en 3ème année de BUT Informatique</h2>
+
         <p class="description">
-          Passionné par le développement Web et l'architecture logicielle.
+          Passionné par le développement Web, l'architecture logicielle et les systèmes distribués.
+          Curieux, rigoureux et toujours motivé pour apprendre de nouvelles technologies.
         </p>
-        <div class="hero-buttons" style="justify-content: center">
-          <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+
+        <div class="hero-buttons">
+          <a href="#projets" class="btn btn-primary">
+            <span>Voir mes projets</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </a>
           <a
             href="assets/docs/Enzo_GIORDANI_CV.pdf"
             target="_blank"
             class="btn btn-secondary"
-            >Télécharger mon CV</a
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <span>Télécharger mon CV</span>
+          </a>
+        </div>
+
+        <!-- Social Quick Links in Hero -->
+        <div class="social-links">
+          <a
+            href="https://github.com/Basic002"
+            target="_blank"
+            class="social-link-btn"
+            title="GitHub d'Enzo Giordani"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/enzo-giordani-b287233a6/"
+            target="_blank"
+            class="social-link-btn"
+            title="LinkedIn d'Enzo Giordani"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="mailto:enzo.giordani57@gmail.com"
+            class="social-link-btn"
+            title="Envoyer un email"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            <span>Email</span>
+          </a>
+        </div>
+
+        <!-- Highlights Stats Banner -->
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <span class="highlight-value">9+</span>
+            <span class="highlight-label">Projets Conçus</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value">3ème</span>
+            <span class="highlight-label">Année BUT Info</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-value">Full-Stack</span>
+            <span class="highlight-label">& Systèmes Distribués</span>
+          </div>
         </div>
       </div>
     </header>
 
+    <!-- Projects Section -->
     <section id="projets" class="section">
-      <h2 class="section-title">Mes Projets Personnels</h2>
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Mes Réalisations</h2>
+        <p class="section-subtitle">
+          Projets personnels développés en autonomie et projets d'équipe universitaires (SAÉ).
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">Tous les projets</button>
+        <button class="filter-btn" data-filter="perso">Projets Personnels</button>
+        <button class="filter-btn" data-filter="sae">Universitaires (SAÉ)</button>
+      </div>
+
+      <!-- Section: Projets Personnels -->
+      <h3 class="projects-subheading" data-category-heading="perso">
+        <span>Projets Personnels</span>
+        <span class="subheading-count">6 projets</span>
+      </h3>
+
       <div class="projects-grid">
-        <article class="project-card">
+        <!-- Project: DISCOVER -->
+        <article class="project-card" data-category="perso">
           <div class="card-image">
+            <span class="project-badge-corner">Concerts & Musique</span>
+            <img
+              src="assets/img/projets/discover/discover.png"
+              alt="Application Discover - Concerts & Musique"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3>✦ DISCOVER — Concerts & Live Music</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">React 19</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">MongoDB Atlas</span>
+              <span class="tech-tag">Leaflet API</span>
+              <span class="tech-tag">Ticketmaster API</span>
+            </div>
+            <p>
+              Plateforme web interactive pour explorer, géolocaliser et suivre en direct les concerts en France.
+              Synchronisation Ticketmaster en temps réel, carte Leaflet interactive avec clustering et favoris persistants sur MongoDB.
+            </p>
+            <a
+              href="https://basic002.github.io/discover/"
+              target="_blank"
+              class="btn-small"
+            >
+              <span>Voir le site</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 1: App Mobile -->
+        <article class="project-card" data-category="perso">
+          <div class="card-image">
+            <span class="project-badge-corner">Mobile</span>
             <img
               src="assets/img/projets/mobile/icon.png"
-              alt="App Mobile vCard"
+              alt="App Mobile Ma Carte Pro"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>App Mobile - Ma Carte Pro</h3>
-            <p class="tech-stack">React Native • Expo • AsyncStorage</p>
+            <div class="tech-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">AsyncStorage</span>
+            </div>
             <p>
-              Application mobile permettant de générer une carte de visite
-              virtuelle (vCard) via un QR Code.
+              Application mobile utilitaire permettant de générer une carte de visite
+              virtuelle (vCard) personnalisée via un QR Code scannable et persistant.
             </p>
-            <a href="pages/projet-mobile.html" class="btn-small"
-              >En savoir plus →</a
-            >
+            <a href="pages/projet-mobile.html" class="btn-small">
+              <span>En savoir plus</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </a>
           </div>
         </article>
 
-        <article class="project-card">
+        <!-- Project 2: Snake Retro -->
+        <article class="project-card" data-category="perso">
           <div class="card-image">
+            <span class="project-badge-corner">Jeu Vidéo</span>
             <img
               src="https://placehold.co/600x400/2c3e50/ffffff?text=Snake+Python"
               alt="Jeu Snake Python"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>Jeu Snake Retro</h3>
-            <p class="tech-stack">Python • Pygame</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pygame</span>
+              <span class="tech-tag">POO</span>
+            </div>
             <p>
-              Le célèbre jeu du serpent recréé de zéro. Gestion des collisions,
-              score dynamique et vitesse progressive.
+              Le célèbre jeu du serpent recréé de zéro. Gestion avancée des collisions,
+              score dynamique, grille fluide et vitesse progressive.
             </p>
             <a
               href="https://github.com/Basic002/jeu-snake-python"
               target="_blank"
               class="btn-small"
-              >Voir le code GitHub →</a
             >
+              <span>Voir le code GitHub</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
 
-        <article class="project-card">
+        <!-- Project 3: Weather Dashboard -->
+        <article class="project-card" data-category="perso">
           <div class="card-image">
+            <span class="project-badge-corner">API & Web</span>
             <img
               src="https://placehold.co/600x400/3498db/ffffff?text=Weather+App+JS"
               alt="Application Météo"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>Weather Dashboard</h3>
-            <p class="tech-stack">JavaScript • API REST • JSON</p>
+            <div class="tech-tags">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">API REST</span>
+              <span class="tech-tag">Fetch / JSON</span>
+            </div>
             <p>
-              Interface météo connectée à l'API OpenWeatherMap. Affichage des
-              conditions en temps réel via requêtes asynchrones.
+              Interface météo connectée à l'API OpenWeatherMap. Affichage en temps
+              réel des conditions climatiques via requêtes asynchrones interactives.
             </p>
-            <a href="https://basic002.github.io/meteo/" class="btn-small">Voir la démo →</a>
+            <a
+              href="https://basic002.github.io/meteo/"
+              target="_blank"
+              class="btn-small"
+            >
+              <span>Voir la démo en direct</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
-        <article class="project-card">
+
+        <!-- Project 4: Proxy Go -->
+        <article class="project-card" data-category="perso">
           <div class="card-image">
+            <span class="project-badge-corner">Réseau & Système</span>
             <img
               src="https://placehold.co/600x400/00add8/ffffff?text=Proxy+HTTP/TCP+Go"
               alt="Proxy Go"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>Proxy HTTP/TCP</h3>
-            <p class="tech-stack">
-              Go (Golang) • TCP/IP • HTTP/HTTPS • Goroutines
-            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Go (Golang)</span>
+              <span class="tech-tag">TCP/IP</span>
+              <span class="tech-tag">HTTP/HTTPS</span>
+              <span class="tech-tag">Goroutines</span>
+            </div>
             <p>
-              Développement from scratch d'un proxy réseau concurrent.
-              Implémentation d'un serveur TCP, gestion des requêtes HTTP brutes,
-              et création d'un tunnel HTTPS bidirectionnel.
+              Développement from scratch d'un proxy réseau concurrent. Serveur TCP
+              robuste, analyse des requêtes HTTP brutes et tunnel HTTPS bidirectionnel.
             </p>
             <a
               href="https://github.com/Basic002/mon-proxy-go"
               target="_blank"
               class="btn-small"
-              >Voir sur GitHub →</a
             >
+              <span>Voir sur GitHub</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
-        <article class="project-card">
+
+        <!-- Project 5: Speed Typing Test -->
+        <article class="project-card" data-category="perso">
           <div class="card-image">
+            <span class="project-badge-corner">Web Interactif</span>
             <img
               src="assets/img/projets/type-test/type-test.png"
               alt="Application Type Test"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>Speed Typing Test</h3>
-            <p class="tech-stack">JavaScript • HTML/CSS • JSON</p>
+            <div class="tech-tags">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">HTML5 / CSS3</span>
+              <span class="tech-tag">DOM API</span>
+            </div>
             <p>
-              Application interactive permettant de mesurer sa vitesse de
-              frappe. Chargement dynamique du vocabulaire et manipulation du DOM
-              en temps réel pour évaluer la précision du joueur.
+              Application interactive pour mesurer sa vitesse de frappe (WPM) et
+              sa précision. Manipulation en temps réel du DOM et statistiques en direct.
             </p>
             <a
               href="https://basic002.github.io/type-test/"
               target="_blank"
               class="btn-small"
-              >Voir le site →</a
             >
+              <span>Tester l'application</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
       </div>
 
-      <h2 class="section-title" style="margin-top: 4rem">
-        Mes Projets Universitaires (SAÉ)
-      </h2>
+      <!-- Section: Projets Universitaires (SAÉ) -->
+      <h3 class="projects-subheading" data-category-heading="sae">
+        <span>Mes Projets Universitaires (SAÉ)</span>
+        <span class="subheading-count">3 projets</span>
+      </h3>
+
       <div class="projects-grid">
-        <article class="project-card">
+        <!-- SAÉ 1.03: Linux -->
+        <article class="project-card" data-category="sae">
           <div class="card-image">
+            <span class="project-badge-corner">SAÉ 1.03</span>
             <img
               src="https://placehold.co/600x400/2c3e50/ffffff?text=SAE+1.03+Linux"
               alt="SAE 1.03 Linux"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>SAÉ 1.03 : Système & Linux</h3>
-            <p class="tech-stack">Bash • Automatisation • Regex</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Bash</span>
+              <span class="tech-tag">Scripting</span>
+              <span class="tech-tag">Regex</span>
+              <span class="tech-tag">Linux</span>
+            </div>
             <p>
-              Création d'outils d'administration système : surveillance des
-              connexions et un analyseur de logs interactif.
+              Création d'outils d'administration système : surveillance automatisée
+              des connexions et conception d'un analyseur de logs interactif.
             </p>
             <a
               href="https://github.com/Basic002/scripts-systeme-linux"
               target="_blank"
               class="btn-small"
-              >Voir les scripts →</a
             >
+              <span>Voir les scripts</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
 
-        <article class="project-card">
+        <!-- SAÉ 2.02: Graphes -->
+        <article class="project-card" data-category="sae">
           <div class="card-image">
+            <span class="project-badge-corner">SAÉ 2.02</span>
             <img
               src="https://placehold.co/600x400/3178c6/ffffff?text=SAE+2.02+Graphes"
               alt="SAE 2.02 Graphes"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
             <h3>SAÉ 2.02 : Algorithmes & Graphes</h3>
-            <p class="tech-stack">TypeScript • Théorie des Graphes • POO</p>
+            <div class="tech-tags">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Théorie des Graphes</span>
+              <span class="tech-tag">POO</span>
+            </div>
             <p>
               Conception d'un moteur de manipulation de graphes orientés (DAG).
-              Implémentation du tri topologique et détection de cycles.
+              Implémentation de tri topologique et détection de cycles.
             </p>
             <a
               href="https://github.com/Basic002/sae-202-graphes"
               target="_blank"
               class="btn-small"
-              >Voir le code →</a
             >
+              <span>Voir le code</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
 
-        <article class="project-card">
+        <!-- SAÉ 3.01: Smart Park -->
+        <article class="project-card" data-category="sae">
           <div class="card-image full-view">
+            <span class="project-badge-corner">SAÉ 3.01</span>
             <img
               src="assets/img/projets/smart-park/SmartPark.png"
               alt="Interface Smart Park"
+              loading="lazy"
             />
           </div>
           <div class="card-content">
-            <span class="group-badge">👥 Projet de groupe</span>
-
+            <span class="group-badge">👥 Projet d'équipe</span>
             <h3>SAÉ 3.01 : Smart Park</h3>
-            <p class="tech-stack">React • Leaflet API • PHP</p>
+            <div class="tech-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Leaflet API</span>
+              <span class="tech-tag">PHP / SQL</span>
+            </div>
             <p>
-              Solution web de stationnement. Géolocalisation et guidage vers le
-              parking le plus proche.
+              Solution web de stationnement intelligent. Géolocalisation, consultation
+              des places disponibles en direct et guidage vers le parking le plus proche.
             </p>
-            <a href="https://smart-park.site" target="_blank" class="btn-small"
-              >Voir le site →</a
-            >
+            <a href="https://smart-park.site" target="_blank" class="btn-small">
+              <span>Voir le site</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="competences" class="section bg-light">
-      <h2 class="section-title">Mes Compétences</h2>
+      <div class="section-header">
+        <span class="section-tag">Savoir-faire</span>
+        <h2 class="section-title">Mes Compétences</h2>
+        <p class="section-subtitle">
+          Technologies, langages et outils que j'utilise régulièrement pour concevoir mes projets.
+        </p>
+      </div>
+
       <div class="skills-container">
+        <!-- Front-end Card -->
         <div class="skill-category">
-          <h3>Front-end</h3>
-          <ul>
-            <li>HTML5 / CSS3</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Flutter/Dart</li>
-          </ul>
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3>Front-end & Mobile</h3>
+          </div>
+          <div class="skill-chips">
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>HTML5 / CSS3</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>JavaScript (ES6+)</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>React / React Native</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Flutter / Dart</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>TypeScript</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Tailwind CSS</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Back-end & Systèmes Card -->
         <div class="skill-category">
-          <h3>Back-end</h3>
-          <ul>
-            <li>PHP / SQL</li>
-            <li>Python</li>
-            <li>Java</li>
-            <li>Node.js</li>
-          </ul>
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                />
+              </svg>
+            </div>
+            <h3>Back-end & Systèmes</h3>
+          </div>
+          <div class="skill-chips">
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Go (Golang)</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Node.js / Express</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>MongoDB Atlas</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Python</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>PHP / MySQL</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Java</span>
+            </div>
+          </div>
         </div>
+
+        <!-- DevOps & Outils Card -->
         <div class="skill-category">
-          <h3>Outils & Devops</h3>
-          <ul>
-            <li>Git / GitHub</li>
-            <li>Linux (WSL)</li>
-            <li>Docker</li>
-            <li>Trello</li>
-          </ul>
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3>Outils & DevOps</h3>
+          </div>
+          <div class="skill-chips">
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Git & GitHub</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Linux (WSL / Bash)</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Docker</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>Trello / Méthode Agile</span>
+            </div>
+            <div class="skill-chip">
+              <span class="skill-chip-dot"></span>
+              <span>API REST / JSON</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer id="contact">
-      <div class="footer-content">
-        <h2>Me contacter</h2>
-        <p>Une opportunité de stage ou une question ? N'hésitez pas.</p>
-        <a href="mailto:enzo.giordani57@gmail.com" class="btn btn-primary"
-          >M'envoyer un email</a
-        >
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="contact-card">
+        <span class="section-tag">Contact</span>
+        <h2>Travaillons ensemble !</h2>
+        <p>
+          Vous avez une proposition de stage, d'alternance ou vous souhaitez simplement échanger
+          sur un projet informatique ? N'hésitez pas à me contacter !
+        </p>
+
+        <div class="contact-actions">
+          <a href="mailto:enzo.giordani57@gmail.com" class="btn btn-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            <span>M'envoyer un email</span>
+          </a>
+
+          <button
+            class="btn btn-secondary copy-email-btn"
+            data-email="enzo.giordani57@gmail.com"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+              />
+            </svg>
+            <span class="copy-feedback">Copier l'adresse email</span>
+          </button>
+        </div>
 
         <div class="social-links">
           <a
             href="https://www.linkedin.com/in/enzo-giordani-b287233a6/"
             target="_blank"
-            >LinkedIn</a
+            class="social-link-btn"
           >
-          <a href="https://github.com/Basic002" target="_blank">GitHub</a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/Basic002"
+            target="_blank"
+            class="social-link-btn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              />
+            </svg>
+            <span>GitHub</span>
+          </a>
         </div>
+      </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
         <div class="copyright">
-          <p>
-            &copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits
-            réservés.
-          </p>
-
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const yearSpan = document.getElementById("year");
-              if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-              }
-            });
-          </script>
-          <a href="mentions-legales.html">Mentions Légales</a>
+          <p>&copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.</p>
+          <p><a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
       </div>
     </footer>
+
+    <!-- Back to top floating button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Remonter en haut de page">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+
+    <!-- Main JavaScript -->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

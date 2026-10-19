@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Météo Direct | JS API Project</title>
+    
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>EG</text></svg>">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
             color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+            padding: 1rem;
+            box-sizing: border-box;
         }
 
         .card {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             width: 100%;
-            max-width: 350px;
+            max-width: 360px;
+            transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         h1 { margin-bottom: 1.5rem; font-size: 1.5rem; color: #2c3e50; }
@@ -34,39 +51,94 @@
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 2px solid #ddd;
             border-radius: 50px;
             outline: none;
             text-align: center;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
         }
 
         button {
-            padding: 10px 20px;
+            padding: 12px 22px;
             border: none;
-            background: #2c3e50;
+            background: #2563eb;
             color: white;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 1.1rem;
         }
 
-        button:hover { background: #34495e; }
+        button:hover { background: #1d4ed8; transform: scale(1.05); }
 
         .weather-info { display: none; }
 
         .temp { font-size: 3rem; font-weight: bold; margin: 10px 0; }
-        .desc { text-transform: capitalize; color: #666; }
-        .icon { width: 100px; height: 100px; }
+        .desc { text-transform: capitalize; color: #666; font-size: 1.05rem; }
+        .icon { width: 100px; height: 100px; margin: 0 auto; }
         
-        .error { color: red; margin-top: 10px; display: none; }
+        .error { color: #ef4444; margin-top: 10px; display: none; font-weight: 500; }
         
         .back-link {
-            display: block;
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: #666;
+            display: inline-block;
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #2563eb;
+        }
+
+        /* Dark Mode Theme */
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0b0f19, #131c31);
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .card {
+            background: #131c31;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        [data-theme="dark"] h1 {
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] h2 {
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] input {
+            background: #0b0f19;
+            border-color: #1e293b;
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] button {
+            background: #3b82f6;
+        }
+        [data-theme="dark"] button:hover {
+            background: #60a5fa;
+        }
+
+        [data-theme="dark"] .desc {
+            color: #94a3b8;
+        }
+
+        [data-theme="dark"] .back-link {
+            color: #94a3b8;
+        }
+        [data-theme="dark"] .back-link:hover {
+            color: #60a5fa;
         }
     </style>
 </head>
@@ -77,7 +149,7 @@
         
         <div class="search-box">
             <input type="text" id="cityInput" placeholder="Entrez une ville (ex: Metz)">
-            <button onclick="getWeather()">🔍</button>
+            <button onclick="getWeather()" aria-label="Rechercher">🔍</button>
         </div>
 
         <p class="error" id="errorMessage">Ville introuvable !</p>
@@ -99,47 +171,50 @@
         const apiKey = "cec9b3fc3c8d3878e684c9c3e21c1c77"; 
 
         async function getWeather() {
-            const city = document.getElementById('cityInput').value;
+            const city = document.getElementById('cityInput').value.trim();
             const errorMsg = document.getElementById('errorMessage');
             const weatherDiv = document.getElementById('weatherInfo');
 
             if (city === "") return;
 
-            // URL de l'API (avec units=metric pour avoir des Celsius)
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric&lang=fr`;
 
             try {
-                // 1. On lance la requête (fetch)
                 const response = await fetch(url);
                 
-                // 2. Si la ville n'existe pas (Erreur 404)
                 if (!response.ok) {
                     errorMsg.style.display = "block";
                     weatherDiv.style.display = "none";
                     return;
                 }
 
-                // 3. On convertit la réponse en JSON (objet lisible par JS)
                 const data = await response.json();
 
-                // 4. On met à jour l'HTML avec les données reçues
                 document.getElementById('cityName').innerText = data.name + ", " + data.sys.country;
                 document.getElementById('temp').innerText = Math.round(data.main.temp) + "°c";
                 document.getElementById('description').innerText = data.weather[0].description;
                 document.getElementById('humidity').innerText = data.main.humidity;
                 
-                // Récupération de l'image officielle de l'API
                 const iconCode = data.weather[0].icon;
                 document.getElementById('weatherIcon').src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-                // On affiche le bloc météo et on cache l'erreur
                 weatherDiv.style.display = "block";
                 errorMsg.style.display = "none";
 
             } catch (error) {
                 console.error("Erreur de connexion:", error);
+                errorMsg.innerText = "Erreur de connexion à l'API.";
+                errorMsg.style.display = "block";
+                weatherDiv.style.display = "none";
             }
         }
+
+        // Permettre la validation par la touche Entrée
+        document.getElementById('cityInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                getWeather();
+            }
+        });
     </script>
 
 </body>

@@ -3,37 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Mobile | Enzo GIORDANI</title>
+    <title>Projet Mobile - Ma Carte Pro | Enzo GIORDANI</title>
     
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='bold' fill='white'>EG</text></svg>">
+
     <link rel="stylesheet" href="../assets/css/style.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+
+    <!-- Anti-FOUC Theme Script -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">MonPortfolio.</div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Retour à l'accueil</a></li>
-        </ul>
+        <a href="../index.html" class="logo">
+            <span>MonPortfolio</span><span class="logo-dot">.</span>
+        </a>
+        
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="../index.html#accueil">Accueil</a></li>
+                <li><a href="../index.html#projets">Projets</a></li>
+                <li><a href="../index.html#competences">Compétences</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <button class="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <header class="project-header">
         <div class="header-content">
-            <h1>Ma Carte Pro (Mobile)</h1>
-            <p class="project-meta">Projet Personnel - React Native</p>
+            <h1>Ma Carte Pro <span class="gradient-text">(Mobile)</span></h1>
+            <p class="project-meta">Projet Personnel • Développement Mobile React Native</p>
             
             <div class="tech-badges">
                 <span class="badge">React Native</span>
                 <span class="badge">Expo</span>
                 <span class="badge">TypeScript</span>
                 <span class="badge">AsyncStorage</span>
+                <span class="badge">Standard vCard</span>
             </div>
             
             <div class="project-buttons">
-                <a href="https://github.com/Basic002/ma-carte-pro" target="_blank" class="btn btn-primary">Voir le code sur GitHub</a>
+                <a href="https://github.com/Basic002/ma-carte-pro" target="_blank" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>Voir le code sur GitHub</span>
+                </a>
+                <a href="../index.html#projets" class="btn btn-secondary">
+                    <span>← Retour aux projets</span>
+                </a>
             </div>
         </div>
     </header>
@@ -42,56 +91,55 @@
         <div class="detail-container">
             
             <div class="detail-block">
-                <h2>Le besoin</h2>
+                <h2>🎯 Le besoin</h2>
                 <p>
-                    L'objectif était de créer une application mobile utilitaire permettant de remplacer les cartes de visite papier. 
-                    L'utilisateur doit pouvoir saisir ses informations une seule fois, les sauvegarder dans le téléphone, et présenter un QR Code scannable pour partager son contact.
+                    L'objectif était de concevoir une application mobile moderne et autonome permettant de remplacer les cartes de visite papier traditionnelles. 
+                    L'utilisateur saisit ses coordonnées professionnelles une seule fois, l'application les stocke localement de manière sécurisée, et génère un QR Code dynamique instantanément lisible par tout smartphone.
                 </p>
             </div>
 
             <div class="detail-block">
-                <h2>Solutions Techniques</h2>
+                <h2>⚙️ Solutions Techniques</h2>
                 <ul class="feature-list">
                     <li>
-                        <strong>Persistance des données :</strong> Utilisation de <code>AsyncStorage</code> pour sauvegarder le profil localement.
+                        <strong>Persistance locale des données :</strong> Utilisation de <code>AsyncStorage</code> pour sauvegarder le profil directement sur le stockage interne de l'appareil.
                     </li>
                     <li>
-                        <strong>Standard vCard :</strong> Génération d'une chaîne de caractères formatée pour être reconnue nativement par les contacts iOS et Android.
+                        <strong>Standard international vCard :</strong> Génération automatisée d'une chaîne de données formatée au standard RFC vCard, permettant l'ajout en un clic du contact dans le répertoire iOS et Android.
                     </li>
                     <li>
-                        <strong>UX Mobile :</strong> Gestion du clavier avec <code>Keyboard.dismiss()</code> et défilement fluide.
+                        <strong>Expérience Utilisateur Mobile (UX) :</strong> Gestion fluide du clavier virtuel via <code>Keyboard.dismiss()</code>, feedback haptique et validation des champs en temps réel.
                     </li>
                 </ul>
             </div>
 
             <div class="detail-block code-block-container">
-                <h2>Un peu de code</h2>
-                <p>Voici comment je gère la sauvegarde locale des données utilisateur :</p>
+                <h2>💻 Extrait de code</h2>
+                <p>Exemple d'implémentation de la persistance asynchrone des données utilisateur :</p>
                 
-                <pre><code class="language-tsx">
-                    // Fonction de sauvegarde (AsyncStorage)
-                    const saveData = async () => {
-                    Keyboard.dismiss(); // On ferme le clavier
-                    try {
-                        // Création de l'objet profil
-                        const profile = { prenom, nom, entreprise, telephone, email };
-                        
-                        // Sauvegarde dans le stockage du téléphone (transformé en String)
-                        await AsyncStorage.setItem('userProfile', JSON.stringify(profile));
-                        
-                        Alert.alert("Succès", "Vos informations sont enregistrées !");
-                    } catch (e) {
-                        Alert.alert("Erreur", "Impossible de sauvegarder");
-                    }
-                    };
-                </code></pre>
+                <pre><code class="language-tsx">// Sauvegarde asynchrone du profil utilisateur avec AsyncStorage
+const saveData = async () => {
+  Keyboard.dismiss(); // Masque le clavier virtuel
+  
+  try {
+    const profile = { prenom, nom, entreprise, telephone, email };
+    
+    // Sérialisation et persistance locale
+    await AsyncStorage.setItem('userProfile', JSON.stringify(profile));
+    
+    Alert.alert("Succès", "Vos coordonnées ont bien été enregistrées !");
+  } catch (error) {
+    Alert.alert("Erreur", "Impossible d'enregistrer vos informations.");
+    console.error("Storage error:", error);
+  }
+};</code></pre>
             </div>
 
             <div class="detail-block">
-                <h2>Aperçu de l'interface</h2>
+                <h2>📱 Aperçu de l'interface</h2>
                 
                 <div class="gallery-container">
-                    <p class="gallery-label">1. Au démarrage (Formulaire vide)</p>
+                    <p class="gallery-label">1. Au premier démarrage (Formulaire à compléter)</p>
                     <div class="gallery-row">
                         <img src="../assets/img/projets/mobile/screen1.jpeg" alt="Accueil vide" class="mobile-screenshot">
                         <img src="../assets/img/projets/mobile/screen2.jpeg" alt="QR vide" class="mobile-screenshot">
@@ -99,7 +147,7 @@
 
                     <div class="gallery-separator"></div>
 
-                    <p class="gallery-label">2. Avec données (QR Code généré)</p>
+                    <p class="gallery-label">2. Données renseignées (QR Code généré en temps réel)</p>
                     <div class="gallery-row">
                         <img src="../assets/img/projets/mobile/screen3.jpeg" alt="Formulaire rempli" class="mobile-screenshot">
                         <img src="../assets/img/projets/mobile/screen4.jpeg" alt="QR Code généré" class="mobile-screenshot">
@@ -112,16 +160,18 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.</p>
+            <div class="copyright">
+                <p>&copy; <span id="year">2026</span> Enzo GIORDANI. Tous droits réservés.</p>
+                <p><a href="../mentions-legales.html">Mentions Légales</a></p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-
+    <!-- Prism JS for code highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js"></script>
-
+    
+    <!-- Main JS (Theme toggle & Mobile menu) -->
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>
