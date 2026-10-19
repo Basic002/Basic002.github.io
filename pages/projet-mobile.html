@@ -16,12 +16,11 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
 
-    <!-- Anti-FOUC Theme Script -->
+    <!-- Anti-FOUC Theme Script: Light Mode by default -->
     <script>
       (function () {
         const savedTheme = localStorage.getItem("portfolio-theme");
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        const theme = savedTheme === "dark" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
@@ -29,9 +28,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="../index.html" class="logo">
-            <span>MonPortfolio</span><span class="logo-dot">.</span>
-        </a>
+        <a href="../index.html" class="logo">MonPortfolio.</a>
         
         <div class="nav-container">
             <ul class="nav-links">
